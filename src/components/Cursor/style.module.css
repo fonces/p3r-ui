@@ -1,0 +1,39 @@
+.root {
+  mix-blend-mode: difference;
+  position: absolute;
+  pointer-events: none;
+  transition: top 0.1s;
+  z-index: 100;
+}
+
+.x {
+  animation: floating-x 0.25s ease-in-out infinite alternate-reverse;
+}
+
+.y {
+  animation: floating-y 2s ease-in-out infinite alternate-reverse;
+}
+
+.cursor {
+  background: #fefefe;
+  height: calc(tan(60deg) * 1em / 2);
+  width: 180px;
+  clip-path: polygon(100% 0, 0 60%, 80% 100%);
+}
+
+@keyframes floating-x {
+  0% {
+    transform: translateX(-3%);
+  }
+  100% {
+    transform: translateX(3%);
+  }
+}
+@keyframes floating-y {
+  0% {
+    transform: translateY(-5%);
+  }
+  100% {
+    transform: translateY(5%);
+  }
+}
