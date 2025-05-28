@@ -7,7 +7,7 @@ export type CursorProps = {
 
 export type CursorHandler = {
   setPosition: (payload: {
-    rect: DOMRect;
+    current: DOMRect;
     base: DOMRect;
     item: TextProps;
   }) => void;

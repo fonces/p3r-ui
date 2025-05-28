@@ -12,12 +12,13 @@ export const Cursor = forwardRef<CursorHandler, CursorProps>((_, ref) => {
     ref,
     () => {
       return {
-        setPosition: ({ rect, base, item }) => {
+        setPosition: ({ current, base, item }) => {
           if (rootRef.current && cursorRef.current) {
-            const { y, right, bottom, width } = rect;
-            rootRef.current.style.top = `${y - base.y + (bottom - y) / 3.5}px`;
+            const { y, right, width, height } = current;
+            rootRef.current.style.top = `${y - base.y + 10}px`;
             rootRef.current.style.right = `${base.right - right - 70}px`;
-            cursorRef.current.style.width = `${width * 1.4}px`;
+            cursorRef.current.style.width = `${width * 1.6}px`;
+            cursorRef.current.style.height = `calc(tan(60deg) * ${height}px / 2)`;
 
             const { italic } = item;
             if (italic) {

@@ -12,8 +12,8 @@ const items: TextProps[] = [
   { children: "STATUS", italic: 60, brightness: 50 },
   { children: "QUEST", italic: 7, brightness: 80 },
   { children: "COMMU", italic: 30, disabled: true },
-  { children: "CALENDAR", italic: 15, disabled: true, x: -1.4 },
-  { children: "SYSTEM", italic: 70 },
+  { children: "CALENDAR", italic: 15, x: -1.4 },
+  { children: "SYSTEM", italic: 70, brightness: 70 },
 ];
 
 function App() {

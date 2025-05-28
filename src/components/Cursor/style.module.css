@@ -16,8 +16,6 @@
 
 .cursor {
   background: #fefefe;
-  height: calc(tan(60deg) * 1.3em / 2);
-  width: 180px;
   clip-path: polygon(100% 0, 0 60%, 80% 100%);
 }
 

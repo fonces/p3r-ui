@@ -6,6 +6,26 @@ import type { GroupProps } from "./type";
 
 import css from "./style.module.css";
 
+const toBeforeRectScaleSize = (rect: DOMRect): DOMRect => {
+  const scale = 1.4;
+  const height = rect.height / scale;
+  const width = rect.width / scale;
+  const heightDiff = rect.height - height;
+  const widthDiff = rect.width - width;
+
+  return {
+    ...rect,
+    bottom: rect.bottom - heightDiff / 2,
+    height,
+    left: rect.left + widthDiff / 2,
+    right: rect.right - widthDiff / 2,
+    top: rect.top + heightDiff / 2,
+    width,
+    x: rect.x + widthDiff / 2,
+    y: rect.top + heightDiff / 2,
+  };
+};
+
 export const Group = ({ items, ...props }: GroupProps) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<CursorHandler>(null);
@@ -17,9 +37,18 @@ export const Group = ({ items, ...props }: GroupProps) => {
       const node = rootRef.current.childNodes[
         activeIndex
       ] as HTMLDetailsElement;
-      const rect = node.getBoundingClientRect();
+      const current = node.getBoundingClientRect();
+      const computedStyles = getComputedStyle(node);
       const item = items[activeIndex];
-      cursorRef.current.setPosition({ rect, base, item });
+
+      cursorRef.current.setPosition({
+        current:
+          computedStyles.getPropertyValue("scale") === "1"
+            ? current
+            : toBeforeRectScaleSize(current),
+        base,
+        item,
+      });
     }
   }, [items, activeIndex]);
 
