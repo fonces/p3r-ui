@@ -8,4 +8,5 @@ export type TextProps = {
   disabled?: boolean;
   order?: number;
   size?: number;
+  x?: number;
 } & React.ComponentProps<"p">;

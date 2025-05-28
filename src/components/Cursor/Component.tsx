@@ -15,12 +15,11 @@ export const Cursor = forwardRef<CursorHandler, CursorProps>((_, ref) => {
         setPosition: ({ rect, base, item }) => {
           if (rootRef.current && cursorRef.current) {
             const { y, right, bottom, width } = rect;
+            rootRef.current.style.top = `${y - base.y + (bottom - y) / 3.5}px`;
+            rootRef.current.style.right = `${base.right - right - 70}px`;
+            cursorRef.current.style.width = `${width * 1.4}px`;
+
             const { italic } = item;
-
-            rootRef.current.style.top = `${y - base.y + (bottom - y) / 3}px`;
-            rootRef.current.style.right = `${base.right - right - 50}px`;
-            cursorRef.current.style.width = `${width * 1.3}px`;
-
             if (italic) {
               cursorRef.current.style.transform = `rotate3d(1, 1, 1, ${
                 (italic - 50) / 2

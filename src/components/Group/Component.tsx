@@ -30,7 +30,6 @@ export const Group = ({ items, ...props }: GroupProps) => {
           key={index}
           bold
           active={activeIndex === index}
-          onClick={() => !item.disabled && setActiveIndex(index)}
           onMouseEnter={() => !item.disabled && setActiveIndex(index)}
           {...item}
         />

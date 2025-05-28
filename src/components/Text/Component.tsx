@@ -10,6 +10,7 @@ export const Text = ({
   disabled = false,
   order = 0,
   size,
+  x,
   ...props
 }: TextProps) => {
   return (
@@ -36,6 +37,7 @@ export const Text = ({
         }),
         ...(disabled && { filter: "brightness(0.4)" }),
         ...(size && { fontSize: `${size}px` }),
+        ...(x && { left: `${x}em` }),
       }}
       {...props}
     />
