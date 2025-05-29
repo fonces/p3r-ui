@@ -6,40 +6,52 @@ export const Text = ({
   brightness = 100,
   bold = false,
   italic = 50,
+  perspective = 1,
   active = false,
   disabled = false,
   order = 0,
   size,
   x,
+  y,
   ...props
 }: TextProps) => {
   return (
-    <p
+    <div
       className={css.root}
-      role="text"
-      data-active={active}
-      data-disabled={disabled}
+      role="root"
       style={{
-        filter: `brightness(${1 - ((100 - brightness) / 1000) * 2})`,
-        ...(order && { zIndex: order }),
-        ...(bold && { WebkitTextStroke: "0.1em" }),
-        ...(italic && {
-          transform: `perspective(1.5em) rotateY(${
-            (italic - 50) / 10
-          }deg) rotate(${(italic - 50) / 4}deg)`,
+        ...(perspective && {
+          perspective: `${perspective}em`,
         }),
-        ...(active && {
-          filter: "brightness(1)",
-          ...(!disabled && {
+        ...(order && { zIndex: order }),
+        ...(size && { fontSize: `${size}px` }),
+        ...(x && { left: `${x}em` }),
+        ...(y && { top: `${y}em` }),
+        ...(active &&
+          !disabled && {
             color: "#040404",
             zIndex: 100,
           }),
-        }),
-        ...(disabled && { filter: "brightness(0.4)" }),
-        ...(size && { fontSize: `${size}px` }),
-        ...(x && { left: `${x}em` }),
       }}
-      {...props}
-    />
+    >
+      <p
+        className={css.text}
+        role="text"
+        data-active={active}
+        data-disabled={disabled}
+        style={{
+          filter: `brightness(${1 - ((100 - brightness) / 1000) * 3})`,
+          ...(bold && { WebkitTextStroke: "0.1em" }),
+          ...(italic && {
+            transform: `rotateY(${(italic - 50) / 10}deg) rotate(${
+              (italic - 50) / 2
+            }deg)`,
+          }),
+          ...(active && { filter: "brightness(1)" }),
+          ...(disabled && { filter: "brightness(0.4)", cursor: "default" }),
+        }}
+        {...props}
+      />
+    </div>
   );
 };

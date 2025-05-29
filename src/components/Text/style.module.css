@@ -1,18 +1,22 @@
 .root {
   color: #51eefc;
+  cursor: pointer;
+  font-style: italic;
   user-select: none;
   width: fit-content;
-  cursor: pointer;
   position: relative;
+}
+
+.text {
   line-height: 1em;
 }
 
-.root:not([data-disabled="true"]):hover {
+.text:not([data-disabled="true"]):hover {
   animation-name: focus;
   animation-duration: 100ms;
 }
 
-.root[data-active="true"]:not([data-disabled="true"]) {
+.text[data-active="true"]:not([data-disabled="true"]) {
   scale: 1.4;
 }
 

@@ -3,6 +3,7 @@ import type { TextProps } from "../Text";
 
 export type CursorProps = {
   ref: RefObject<HTMLDivElement | null>;
+  shadow?: boolean;
 };
 
 export type CursorHandler = {
@@ -11,4 +12,5 @@ export type CursorHandler = {
     base: DOMRect;
     item: TextProps;
   }) => void;
+  getRootNode: () => HTMLDivElement;
 };
