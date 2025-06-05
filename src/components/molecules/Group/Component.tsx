@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Cursor, type CursorHandler } from "@/components/Cursor";
-import { Text } from "@/components/Text";
-// import { toBeforeRectScaleSize } from "@/utils/dom";
+import { Cursor, type CursorHandler } from "@/components/atoms/Cursor";
+import { Text } from "@/components/atoms/Text";
 
 import type { GroupProps } from "./type";
 
