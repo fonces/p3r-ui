@@ -11,14 +11,63 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SystemImport } from './routes/system'
+import { Route as StatusImport } from './routes/status'
 import { Route as SkillImport } from './routes/skill'
+import { Route as QuestImport } from './routes/quest'
+import { Route as PersonaImport } from './routes/persona'
+import { Route as ItemImport } from './routes/item'
+import { Route as CommuImport } from './routes/commu'
+import { Route as CalendarImport } from './routes/calendar'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
+const SystemRoute = SystemImport.update({
+  id: '/system',
+  path: '/system',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StatusRoute = StatusImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const SkillRoute = SkillImport.update({
   id: '/skill',
   path: '/skill',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuestRoute = QuestImport.update({
+  id: '/quest',
+  path: '/quest',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PersonaRoute = PersonaImport.update({
+  id: '/persona',
+  path: '/persona',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ItemRoute = ItemImport.update({
+  id: '/item',
+  path: '/item',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CommuRoute = CommuImport.update({
+  id: '/commu',
+  path: '/commu',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CalendarRoute = CalendarImport.update({
+  id: '/calendar',
+  path: '/calendar',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +88,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarImport
+      parentRoute: typeof rootRoute
+    }
+    '/commu': {
+      id: '/commu'
+      path: '/commu'
+      fullPath: '/commu'
+      preLoaderRoute: typeof CommuImport
+      parentRoute: typeof rootRoute
+    }
+    '/item': {
+      id: '/item'
+      path: '/item'
+      fullPath: '/item'
+      preLoaderRoute: typeof ItemImport
+      parentRoute: typeof rootRoute
+    }
+    '/persona': {
+      id: '/persona'
+      path: '/persona'
+      fullPath: '/persona'
+      preLoaderRoute: typeof PersonaImport
+      parentRoute: typeof rootRoute
+    }
+    '/quest': {
+      id: '/quest'
+      path: '/quest'
+      fullPath: '/quest'
+      preLoaderRoute: typeof QuestImport
+      parentRoute: typeof rootRoute
+    }
     '/skill': {
       id: '/skill'
       path: '/skill'
       fullPath: '/skill'
       preLoaderRoute: typeof SkillImport
+      parentRoute: typeof rootRoute
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusImport
+      parentRoute: typeof rootRoute
+    }
+    '/system': {
+      id: '/system'
+      path: '/system'
+      fullPath: '/system'
+      preLoaderRoute: typeof SystemImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +151,100 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/calendar': typeof CalendarRoute
+  '/commu': typeof CommuRoute
+  '/item': typeof ItemRoute
+  '/persona': typeof PersonaRoute
+  '/quest': typeof QuestRoute
   '/skill': typeof SkillRoute
+  '/status': typeof StatusRoute
+  '/system': typeof SystemRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/calendar': typeof CalendarRoute
+  '/commu': typeof CommuRoute
+  '/item': typeof ItemRoute
+  '/persona': typeof PersonaRoute
+  '/quest': typeof QuestRoute
   '/skill': typeof SkillRoute
+  '/status': typeof StatusRoute
+  '/system': typeof SystemRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/calendar': typeof CalendarRoute
+  '/commu': typeof CommuRoute
+  '/item': typeof ItemRoute
+  '/persona': typeof PersonaRoute
+  '/quest': typeof QuestRoute
   '/skill': typeof SkillRoute
+  '/status': typeof StatusRoute
+  '/system': typeof SystemRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/skill'
+  fullPaths:
+    | '/'
+    | '/calendar'
+    | '/commu'
+    | '/item'
+    | '/persona'
+    | '/quest'
+    | '/skill'
+    | '/status'
+    | '/system'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/skill'
-  id: '__root__' | '/' | '/skill'
+  to:
+    | '/'
+    | '/calendar'
+    | '/commu'
+    | '/item'
+    | '/persona'
+    | '/quest'
+    | '/skill'
+    | '/status'
+    | '/system'
+  id:
+    | '__root__'
+    | '/'
+    | '/calendar'
+    | '/commu'
+    | '/item'
+    | '/persona'
+    | '/quest'
+    | '/skill'
+    | '/status'
+    | '/system'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CalendarRoute: typeof CalendarRoute
+  CommuRoute: typeof CommuRoute
+  ItemRoute: typeof ItemRoute
+  PersonaRoute: typeof PersonaRoute
+  QuestRoute: typeof QuestRoute
   SkillRoute: typeof SkillRoute
+  StatusRoute: typeof StatusRoute
+  SystemRoute: typeof SystemRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CalendarRoute: CalendarRoute,
+  CommuRoute: CommuRoute,
+  ItemRoute: ItemRoute,
+  PersonaRoute: PersonaRoute,
+  QuestRoute: QuestRoute,
   SkillRoute: SkillRoute,
+  StatusRoute: StatusRoute,
+  SystemRoute: SystemRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +258,42 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/skill"
+        "/calendar",
+        "/commu",
+        "/item",
+        "/persona",
+        "/quest",
+        "/skill",
+        "/status",
+        "/system"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/calendar": {
+      "filePath": "calendar.tsx"
+    },
+    "/commu": {
+      "filePath": "commu.tsx"
+    },
+    "/item": {
+      "filePath": "item.tsx"
+    },
+    "/persona": {
+      "filePath": "persona.tsx"
+    },
+    "/quest": {
+      "filePath": "quest.tsx"
+    },
     "/skill": {
       "filePath": "skill.tsx"
+    },
+    "/status": {
+      "filePath": "status.tsx"
+    },
+    "/system": {
+      "filePath": "system.tsx"
     }
   }
 }
