@@ -1,3 +1,5 @@
+import { Outlet } from "@tanstack/react-router";
+
 import { Overlay } from "./components/Overlay";
 import { Group } from "./components/Group/Component";
 
@@ -31,6 +33,7 @@ function App() {
   return (
     <Overlay>
       <Group items={items} />
+      <Outlet />
     </Overlay>
   );
 }
