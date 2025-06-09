@@ -1,0 +1,1 @@
+import{j as r}from"./index-Bf7YrjzF.js";import{O as o}from"./Component-BusR9b0H.js";const t=()=>r.jsxs(o,{children:[r.jsx("h1",{children:"Skillページ"}),r.jsx("p",{children:"ここにスキルの内容を追加してください。"})]});export{t as component};
