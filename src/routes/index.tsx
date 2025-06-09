@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Overlay } from "@/components/atoms/Overlay";
 import { Group } from "@/components/molecules/Group/Component";
-import type { TextProps } from "@/components/Text";
+import type { TextProps } from "@/components/atoms/Text";
 
 console.log("著作権よくわかりませんすみません。");
 

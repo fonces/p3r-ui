@@ -1,4 +1,4 @@
-import type { TextProps } from "@/components/Text";
+import type { TextProps } from "@/components/atoms/Text";
 
 export type GroupProps = {
   items: TextProps[];

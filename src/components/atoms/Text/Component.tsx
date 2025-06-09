@@ -18,7 +18,7 @@ export const Text = ({
   return (
     <div
       className={css.root}
-      role="root"
+      role="button"
       style={{
         ...(perspective && {
           perspective: `${perspective}em`,
